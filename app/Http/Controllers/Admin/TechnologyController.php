@@ -66,7 +66,9 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        return view('admin.technologies.edit', compact('technology'));
+        $projects = Project::all();
+
+        return view('admin.technologies.edit', compact('technology', 'projects'));
     }
 
     /**
@@ -78,6 +80,11 @@ class TechnologyController extends Controller
         //slug
         $slug = Str::slug($request->name, '-');
         $val_data['slug'] = $slug;
+
+        if ($request->has('projects')) {
+            $technology->projects()->sync($val_data['projects']);
+        }
+
         //update my istance
         $technology->update($val_data);
         return to_route('admin.technologies.index', $technology);

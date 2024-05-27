@@ -18,6 +18,31 @@
                 @enderror
             </div>
 
+            <!--Input for projects-->
+            <div class="mb-3">
+                <label for="projects" class="form-label">projects (Hold down ctrl to select more than one)</label>
+                <select multiple class="form-select form-select-lg" name="projects[]" id="projects">
+                    @foreach ($projects as $project)
+                        @if ($errors->any())
+                            <option value="{{ $project->id }}"
+                                {{ in_array($project->id, old('projects', [])) ? 'selected' : '' }}>
+                                {{ $project->name }}
+                            </option>
+                        @else
+                            <option value="{{ $project->id }}"
+                                {{ $technology->projects->contains($project->id) ? 'selected' : '' }}>
+                                {{ $project->title }}
+                            </option>
+                        @endif
+                    @endforeach
+                </select>
+                @error('projects')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
             <button class="btn btn-primary" type="submit">Modify technology</button>
 
 
