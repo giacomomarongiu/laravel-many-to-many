@@ -37,7 +37,8 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body d-flex">
-                                    <div>Are you sure you want to delete <span class="fw-bold">{{ $technology->name }}</span>?
+                                    <div>Are you sure you want to delete <span
+                                            class="fw-bold">{{ $technology->name }}</span>?
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -61,6 +62,12 @@
                 <div class="card text-start">
                     <div class="card-body">
                         <h4 class="card-name">{{ $technology->name }}</h4>
+                        <strong>Projects where you use this technology: </strong><br>
+                        @if ($technology->projects)
+                            @foreach ($technology->projects as $project)
+                                <a href="{{ route('admin.projects.show', $project) }}"><span class="badge text-bg-primary">{{ $project->title }}</span></a>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 
