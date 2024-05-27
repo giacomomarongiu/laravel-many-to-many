@@ -12,7 +12,7 @@
             </h1>
             <div class="d-flex align-items-center m-3 gap-3">
                 <p class="fs-3 m-0">Welcome! This is a humble collection of my Boolean exercises, check it out! </p>
-                <a href="" class="btn btn-light border fw-bold">Explore</a>
+                <a href="{{ route('home') }}" class="btn btn-light border fw-bold">Explore</a>
             </div>
 
         </div>

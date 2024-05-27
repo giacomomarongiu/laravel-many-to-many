@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Guests\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\TechnologyController;
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [PageController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'verified'])
     // For chain
