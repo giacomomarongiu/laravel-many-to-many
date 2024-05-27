@@ -78,8 +78,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
 
     }
 
@@ -104,6 +105,10 @@ class ProjectController extends Controller
             //path to my istance
             $img_path = Storage::put('uploads', $val_data['img']);
             $val_data['img'] = $img_path;
+        }
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($val_data['technologies']);
         }
 
         //dd($val_data);

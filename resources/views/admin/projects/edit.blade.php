@@ -32,6 +32,32 @@
             </div>
 
 
+            <!--Input for technologies-->
+            <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies (Hold down ctrl to select more than one)</label>
+                <select multiple class="form-select form-select-lg" name="technologies[]" id="technologies">
+                    @foreach ($technologies as $tech)
+                        @if ($errors->any())
+                            <option value="{{ $tech->id }}"
+                                {{ in_array($tech->id, old('technologies', [])) ? 'selected' : '' }}>
+                                {{ $tech->name }}
+                            </option>
+                        @else
+                            <option value="{{ $tech->id }}"
+                                {{ $project->technologies->contains($tech->id) ? 'selected' : '' }}>
+                                {{ $tech->name }}
+                            </option>
+                        @endif
+                    @endforeach
+                </select>
+                @error('technologies')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+
             <!-- Input for image-->
             <div class="mb-3">
                 <label for="img" class="form-label">Image</label>
