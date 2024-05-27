@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -26,9 +27,9 @@ class ProjectController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   $tecnologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types','tecnlogies'));
     }
 
     /**
