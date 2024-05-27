@@ -14,10 +14,10 @@ class TechnologySeeder extends Seeder
      */
     public function run(): void
     {
-        $tecnologies = ['Laravel', 'PHP', 'Javascript', 'HTML', 'CSS', 'Bootstrap', 'Vue', 'Vite'];
+        $technologies = ['Laravel', 'PHP', 'Javascript', 'HTML', 'CSS', 'Bootstrap', 'Vue', 'Vite'];
 
 
-        foreach ($tecnologies as $tecnology) {
+        foreach ($technologies as $tecnology) {
             $newTecnology = new Technology();
             $newTecnology->name = $tecnology;
             $newTecnology->slug = Str::slug($newTecnology->name, '-');

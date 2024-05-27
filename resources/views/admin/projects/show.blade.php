@@ -73,9 +73,9 @@
                         <div class="card-text">
                             <strong>Project type: </strong> {{ $project->type ? $project->type->name : 'No Type' }}
                         </div>
-                        <strong>Tecnologies: </strong>
-                        @if ($project->tecnologies)
-                            @foreach ($project->tecnologies as $tech)
+                        <strong>technologies: </strong>
+                        @if ($project->technologies)
+                            @foreach ($project->technologies as $tech)
                                 <span class="badge text-bg-primary">{{ $tech->name }}</span>
                             @endforeach
                         @endif

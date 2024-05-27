@@ -27,9 +27,9 @@ class ProjectController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {   $tecnologies = Technology::all();
+    {   $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.create', compact('types','tecnlogies'));
+        return view('admin.projects.create', compact('types','technologies'));
     }
 
     /**
@@ -53,8 +53,14 @@ class ProjectController extends Controller
             $val_data['img'] = $img_path;
         }
 
+
         //Creating new istance
-        Project::create($val_data);
+        $project=Project::create($val_data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($val_data['technologies']);
+        }
+        
         return to_route('admin.projects.index');
     }
 

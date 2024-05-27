@@ -31,6 +31,19 @@
                 </select>
             </div>
 
+            <!--Input for technologies-->
+            <div class="mb-3">
+                <label for="technologies" class="form-label">technologies (Hold down ctrl to select more than one)</label>
+                <select multiple class="form-select form-select-lg" name="technologies[]" id="technologies">
+                    @foreach ($technologies as $tech)
+                        <option value="{{ $tech->id }}"
+                            {{ in_array($tech->id, old('technologies', [])) ? 'selected' : '' }}>
+                            {{ $tech->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
 
             <!-- Input for image-->
             <div class="mb-3">
