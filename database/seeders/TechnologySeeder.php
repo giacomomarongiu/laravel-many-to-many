@@ -14,7 +14,7 @@ class TechnologySeeder extends Seeder
      */
     public function run(): void
     {
-        $technologies = ['Laravel', 'PHP', 'Javascript', 'HTML', 'CSS', 'Bootstrap', 'Vue', 'Vite', 'Python'];
+        $technologies = ['Laravel', 'PHP', 'Javascript', 'HTML', 'CSS', 'Bootstrap', 'Vue', 'Vite', 'Python','SCSS'];
 
 
         foreach ($technologies as $tecnology) {
