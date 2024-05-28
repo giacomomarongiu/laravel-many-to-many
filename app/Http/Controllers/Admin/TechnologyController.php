@@ -16,8 +16,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //dd(Technology::all());
-        return view('admin.technologies.index', ['technologies' => Technology::orderByDesc('id')->paginate(10)]);
+        $projects = Project::all();
+        return view('admin.technologies.index', ['technologies' => Technology::orderByDesc('id')->paginate(10)], compact('projects'));
     }
 
     /**
@@ -25,8 +25,8 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        $projects= Project::all();
-        return view('admin.technologies.create', compact('projects'));
+        /*  $projects= Project::all();
+         return view('admin.technologies.create', compact('projects')); */
     }
 
     /**
@@ -50,7 +50,10 @@ class TechnologyController extends Controller
         if ($request->has('projects')) {
             $project->projects()->attach($val_data['projects']);
         }
-        return to_route('admin.technologies.index');
+
+        $projects = Project::all();
+
+        return to_route('admin.technologies.index', compact('projects'));
     }
 
     /**

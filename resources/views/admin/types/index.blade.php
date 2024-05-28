@@ -3,7 +3,7 @@
 @section('content')
     <header class="py-3 d-flex justify-content-evenly">
         <h1 class="text-primary">Types</h1>
-        {{--         <button class="btn btn-primary"><a class="text-light" href="{{ route('admin.types.create') }}">Add New
+{{--         <button class="btn btn-primary"><a class="text-light" href="{{ route('admin.types.create') }}">Add New
                 type</a></button> --}}
     </header>
     <div class="container d-flex gap-1">
@@ -38,7 +38,7 @@
                         <th scope="col">Type</th>
                         <th scope="col">Slug</th>
                         <th scope="col">Operations</th>
-                        <th scope="col">Counter of projects</th>
+                        
                     </tr>
                 </thead>
 
@@ -102,8 +102,6 @@
                                     </div>
                                 </div>
                             </td>
-
-                            <td>{{ count($projects->type) }}</td>
                         </tr>
 
                     @empty
