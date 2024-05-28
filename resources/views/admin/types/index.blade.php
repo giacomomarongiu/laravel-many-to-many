@@ -1,14 +1,36 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        <header class="py-3 d-flex justify-content-between">
-            <h1 class="text-primary">types</h1>
-            <button class="btn btn-primary"><a class="text-light" href="{{ route('admin.types.create') }}">Add New
-                    type</a></button>
-        </header>
+    <header class="py-3 d-flex justify-content-evenly">
+        <h1 class="text-primary">Types</h1>
+        {{--         <button class="btn btn-primary"><a class="text-light" href="{{ route('admin.types.create') }}">Add New
+                type</a></button> --}}
+    </header>
+    <div class="container d-flex gap-1">
 
-        <div class="table-responsive">
+
+        <div class="inputs col-6 rounded">
+            <form class="form-control bg-light p-4 rounded" action="{{ route('admin.types.store') }}" method="post">
+                @csrf
+
+                <!-- Input for name-->
+                <div class="mb-3 rounded">
+                    <label for="name" class="form-label">Name type</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                        id="name" aria-describedby="nameHelper" placeholder="name" value="{{ old('name') }}" />
+                    @error('name')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <button class="btn btn-primary" type="submit">Create type</button>
+
+
+            </form>
+        </div>
+
+
+        <div class="table-responsive col-6 rounded">
             <table class="table table-primary">
                 <thead>
                     <tr>
@@ -16,6 +38,7 @@
                         <th scope="col">Type</th>
                         <th scope="col">Slug</th>
                         <th scope="col">Operations</th>
+                        <th scope="col">Counter of projects</th>
                     </tr>
                 </thead>
 
@@ -66,8 +89,7 @@
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <form action="{{ route('admin.types.destroy', $type) }}"
-                                                    method="post">
+                                                <form action="{{ route('admin.types.destroy', $type) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">
@@ -80,6 +102,8 @@
                                     </div>
                                 </div>
                             </td>
+
+                            <td>{{ count($projects->type) }}</td>
                         </tr>
 
                     @empty
