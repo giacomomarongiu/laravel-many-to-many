@@ -8,8 +8,8 @@
                     technology</a></button>
         </header>
 
-        <main class="d-flex">
-            <form class=" bg-light p-4 col-6 " action="{{ route('admin.technologies.store') }}" method="post">
+        <main class="d-flex gap-1">
+            <form class=" bg-light p-4 col-6 rounded" action="{{ route('admin.technologies.store') }}" method="post">
                 @csrf
 
                 <!-- Input for name-->
@@ -40,7 +40,7 @@
 
             </form>
 
-            <div class="table-responsive col-6">
+            <div class="table-responsive col-6 rounded">
                 <table class="table table-primary">
                     <thead>
                         <tr>

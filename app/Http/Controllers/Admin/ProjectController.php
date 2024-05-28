@@ -123,6 +123,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //$project->tags()->detach();
+        $project->technologies()->detach();
 
         //If i do not do this my istance in deleted but my file will remain in my storage
         if ($project->img) {
